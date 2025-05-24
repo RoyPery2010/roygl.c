@@ -27,31 +27,7 @@ void swap_int(int *a, int *b) {
     *b = t;
 }
 
-void royglc_draw_line(size_t pixels_width, size_t pixels_height, int x1, int y1, int x2, int y2, uint32_t color) {
-    int dx = x2 - x1;
-    int dy = y2 - y1;
-    if (dx != 0) {
-        int c = y1 - dy*x1/dx;
-        if (x1 > x2) swap_int(&x1, &x2);
-        for (int x = x1; x <= x2; ++x) {
-            int y = dy*x/dx + c;
-            if (0 <= y && y < (int) pixels_height) {
-                pixels[y * pixels_width + x] = color;
-            }
-        }
-    } else {
-        int x = x1;
-        if (0 <= x && x < (int) pixels_width) {
-            if (y1 > y2) swap_int(&y1, &y2);
-            for (int y = y1; y <= y2; ++y) {
-                if (0 <= y && y < (int) pixels_height) {
-                    pixels[y * pixels_width + x] = color;
-                }
-            }
-        }
-    }
-    
-}
+
 
 bool checker_example(void) {
     royglc_fill(WIDTH, HEIGHT, BACKGROUND_COLOR);
